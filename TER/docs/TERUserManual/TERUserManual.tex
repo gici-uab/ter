@@ -1,0 +1,330 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[]{graphicx}
+\usepackage[]{times}
+\usepackage{geometry}
+
+\geometry{verbose,a4paper,tmargin=1.5cm,bmargin=2cm,lmargin=2cm,rmargin=2cm}
+\renewcommand{\baselinestretch}{1.0}
+
+\title{TER user manual \\ \small (version 2.0 beta)}
+
+\author{
+GICI group \vspace{0.1cm} \\
+\small Department of Information and Communications Engineering \\
+\small Universitat Aut{\`o}noma Barcelona \\
+\small http://www.gici.uab.es  -  http://www.gici.uab.es/TER \\
+\small  http://sourceforge.net/projects/ter \\
+}
+
+\date{November 2007}
+
+\begin{document}
+\maketitle
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Overview}
+\label{sect:overview}
+
+	
+TER is an implementation of the CCSDS Recommendation for Image Data
+Compression (Recommended Standard CCSDS 122.0-B-1 Blue Book). TER
+implements not only the CCSDS Recommendation, but also new features
+add to the Recommended Standard. TER is designed and programmed with
+the aim to provide a good basis to test and develop the CCSDS
+Recommendation for Image Data Compression. The application provides
+different functionalitites that can be controlled via its
+parameters. These parameters can be passed as program arguments,
+selecting some of the algorithms that the application
+incorporates. More than 30 parameters allow the combination of
+different processes to produce a compressed image codestream. Each one
+of these parameters and its valid arguments are explained in the
+application help and in this manual. When added features are used, the
+encoded file is not compilant with the Recommendation. Parameters employed in the added
+features are also required as program arguments to correctly perform
+the decoding process.
+
+TER also defines a new file syntax for the Recommendation by adding
+some embedded headers.
+The features added by the new file syntax are similar to the ones
+available in JPEG2000 and in JPIP.
+As in JPEG2000, the encoded stream can be ordered by: quality (L),
+position (P), resolution (R), and component (C);
+obtaining, among others, the following progression orders: LRCP, RLCP,
+RPCL, PCRL, and CPRL. Embedded headers permit to decode in any progression
+order, even if the image was encoded using a different one. In addition,
+TER allows to decorrelate in the spectral domain
+before encoding the whole image instead each band separately
+as restricted in the Recommendation.
+
+A development manual is also available and the API is well documented
+to facilitate an easy understanding, extension and modification of
+the application. All the design and implementation details are widely
+explained in these manuals and the source code is commented. All
+these information is publicly available in the web page
+http://www.gici.uab.es/TER, where you can download the sources and
+the manuals. To guarantee a free distribution, TER has the General
+Public License (GNU GPL) of the Free Software Foundation
+(http://www.fsf.org/licensing/licenses/gpl.html).
+
+
+TER incorparates algorithms to make it flexible enough to manage
+different kind of data, to control and monitor the compression 
+stages, to extract statistical information, etc. As we explained
+above TER is a platform to test new ideas, not to be a commercial
+product or to be integrated to other applications that need support
+for encoding/decoding files compilant with the CCSDS Recommendation
+for Image Data Coding. The double functionality of the application
+makes that the application performance cannot be as good as some other
+implementations, so for commercial purposes the GICI group does not
+recommend the use of this application.
+
+We have tried to make a good design and efforts have been made to
+develop and implement the application as useful as
+desirable. However, we could not foresee all the needs of TER
+users, so we will thank you for all the suggestions and comments
+that you can report to us (gici-dev@abra.uab.es). 
+
+\flushright{We hope you enjoy it, \vspace{0.25cm}\\GICI
+  group}\flushleft{} 
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Usage}
+\label{sect:usage}
+
+TER is divided in 3 applications: the encoder, the decoder
+and, the extractor of images using the quality, postion,
+component, and resolution scalability of a TER file. All
+programs are encapsulated in jar files in the \emph{dist/}
+directory and can be executed separately using the JVM. Each
+application accepts its own parameters which can be passed as
+simple command arguments, i.e. \emph{java -jar dist/TERcode.jar -i
+  inputImage.pgm}. The distribution incorporates a shell script both 
+for the encoder and the decoder called \emph{TERcode} and
+\emph{TERdecode} to facilitate executions in a GNU/Linux
+environment. TER may use a great amount of memory. Hence, it is
+recommended to set the maximum amount of memory that the
+application can allocate (usually the same as you computer RAM) via
+the \emph{-Xmx} parameter of the JVM, i.e. \emph{java -Xmx512m -jar
+  dist/TERcode.jar -i inputImage}.  
+
+
+The usage of TER is very simple. To compress an image you can use
+the encoder with some specific parameters. All the functionalities of
+TER are explained with the application parameters, so 
+it is recommended to read them to know what you can do. Do not
+worry if you select incompatible parameters or functionalities; the
+application detects these problems and displays warning messages to
+the user. 
+
+When you have a compressed codestream, you can use the decoder to
+recover the original image and save it with other common
+formats. TER decoder can manage codestreams compliant with the CCSDS
+Recommendation for Image Data Coding generated by other
+applications. However not all the options 
+defined in the Recommended Standard are implemented. TER decoder can
+also manage specific TER files not compilant with the Recommendation.
+In such cases, it is required that the user indicates that the file is
+not compilant and that passes to the decoder the parameters using by
+the encoder as program parameters.
+
+A typical use of the application is as follows: 
+
+\hspace{0.5cm}\emph{\# TERcode -i lena.pgm -o lenaCompressed.ter} \\ 
+\hspace{0.5cm}\emph{\# TERdecode -i lenaCompressed.ter -o
+  lenaRecovered.pgm} \\  
+
+or if you do not use the shell scripts:
+
+\hspace{0.5cm}\emph{\# java -Xmx512m -jar dist/TERcode.jar -i
+  lena.pgm -o lenaCompressed} \\ 
+\hspace{0.5cm}\emph{\# java -Xmx512m -jar dist/TERdecode.jar -i
+  lenaCompressed.ter -o lenaRecovered.pgm} \\  
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Parameters}
+\label{sect:parameters}
+
+In this section all supported parameters both for the encoder and
+the decoder are explained. This documentation is extracted from the
+application help and it explains all the algorithms incorporated to
+TER. By reading them you will know all the functionalities of the
+application. 
+
+Parameters have two formats: the long and the short
+specification. Long specification has $-$$-$ at the beginning while
+short specification has $-$ (it does not matter which one you
+choose). Each parameter has its own arguments, which usually are
+integers, floats, booleans (0 to indicate false and 1 to indicate
+true) or strings. If the user specifies some invalid arguments, the
+application will display warning messages. Most of these parameters
+are not mandatory. When they are not specified default values are
+used. The following table shows how each parameter will be
+displayed in this manual: 
+
+\begin{center}\begin{tabular}{|rr|rlrl|}
+	 \hline
+	 \multicolumn{2}{|l|}{\textbf{$-$$-$longParameter}} &
+	 \multicolumn{4}{|l|}{$\{$parameter arguments$\}$} \\
+	 \cline{3-6}
+	 \multicolumn{2}{|l|}{\textbf{$-$shortParameter}} & \emph{Mandatory:} & Yes/No & &  \\
+	 \hline
+	 \emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Parameter explanation} \\
+	 \hline
+	 \emph{Default:} & \multicolumn{5}{|p{12cm}|}{Parameter default values.} \\
+	 \hline
+\end{tabular}\end{center}
+
+\subsection{TERcoder parameters}
+\label{sect:encoderParameters}
+
+\input{coderParameters}
+
+\newpage
+
+\subsection{TERdecoder parameters}
+\label{sect:decoderParameters}
+
+\input{decoderParameters}
+
+\newpage
+
+\subsection{TERdisplay parameters}
+\label{sect:displayParameters}
+
+\input{displayParameters}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Examples}
+\label{sect:examples}
+
+\vspace{0.25cm}\textbf{LOSSLESS COMPRESSION USING A SINGLE SEGMENT}\vspace{0.25cm}  
+
+\emph{\#TERcode -i workDir/mars512x32.raw -g 1 32 512 1 0 0 -of 0
+  workDir/mars512x32} \\
+
+This execution will generate a file (compilant with the
+Recommendation) called \emph{mars512x32.rec}. The default mode of TER
+is lossless compression using a single segment and employing part 2,3
+and 4 flag for the segment. To decompress the file and recover the
+original image run:
+
+\emph{\#TERdecode -i workDir/mars512x32.rec -o
+  workDir/mars512x32.ter.raw -g 1 32 512 1 0 0 } \\   
+
+If the user wants to store the image in a known format, for example
+'pgm' format, then there is not needed the geometry of the output
+image. The user could run:
+
+\emph{\# TERdecode -i workDir/mars512x32.rec -o
+  workDir/mars512x32.ter.pgm} \\ 
+
+\vspace{0.25cm}\textbf{LOSSLESS COMPRESSION USING MORE THAN ONE
+  SEGMENT}\vspace{0.25cm}  
+		
+\emph{\#TERcode -i workDir/sar16bit.raw -g 1 512 512 2 0 0 -wt 4
+  --part2Flag 1 0 --part3Flag 1 0 --part4Flag 1 0 --blocksPerSegment
+  64 -of 0} \\    
+		
+This execution will generate a file (compilant with the
+Recommendation) called \emph{sar16bit.raw.rec}. The wavelet employed
+is the integer 9/7, each segment contains 64 blocks and only the first
+segment contains the part 2, 3 and 4 header. All other segments have
+only Part1 header. To decompress the file and recover the original
+image run: 
+
+\emph{\#./TERdecode -i workDir/sar16bit.raw.rec -g 1 512 512 2 0 0 -o
+  workDir/sar16bit.raw.rec.raw} 
+
+
+\vspace{0.25cm}\textbf{LOSSY COMPRESSION}\vspace{0.25cm}
+
+\emph{\#TERcode -i workDir/foc.raw -g 1 512 1024 2 0 0 --pixelBitDepth
+  12 - --blocksPerSegment 128 wt 3 -o workDir/foc.raw.rec -of 1}
+
+This exection uses the float 9/7 wavelet transform, then some loss is
+produce when coefficients are transformed. To decompress the file and
+recover the original image run:
+
+\emph{\#TERdecode -i workDir/foc.raw.rec -o workDir/foc.raw.rec.raw
+  -g 1 512 1024 2 0 0}  
+
+
+\vspace{0.25cm}\textbf{COMPRESSION USING A FIXED SEGBYTELIMIT}\vspace{0.25cm}  
+
+\emph{\#./TERcode -i workDir/sar16bit.raw -g 1 512 512 2 0 0 -wt 4 --part2Flag
+1 0 --part3Flag 1 0 --part4Flag 1 0 --blocksPerSegment 64
+ -of 0 --segByteLimit 3072 --useFill 1}
+
+This execution creates a file where each segment size is limited to
+3072 bytes, in case the size of the segment in lower that 3072, it is
+completed with zeros up to the required size. To decompress
+the file and recover the original image run:
+
+\emph{\#./TERdecode -i workDir/sar16bit.raw.rec -g 1 512 512 2 0 0 -o
+  workDir/sar16bit.raw.rec.raw} 
+
+\vspace{0.25cm}\textbf{COMPRESSION USING CUSTOM WEIGHTS}\vspace{0.25cm} 
+
+\emph{\#TERcode -i workDir/marstest.raw -g 1 512 512 1 0 0 -wt 4
+  --part2Flag 1 0 --part3Flag 1 0 --part4Flag 1 0 --blocksPerSegment
+  64 --pixelBitDepth 8 -of 0 -wg 1 -cw 4 4 4 2 2
+  2 1 1 1 1} 
+
+This execution produces a encoded file with the scaling factor for
+each subband of the transformed image given by the user. To decompress
+the file and recover the original image run:
+
+\emph{\#TERdecode -i workDir/marstest.raw.rec -o
+  workDir/marstest.raw.rec.raw -g 1 512 512 1 0 0} 
+
+\vspace{0.25cm}\textbf{ONLY DC COMPONENTS COMPRESSION}\vspace{0.25cm}
+\emph{\#TERcode -i workDir/marstest.raw -g 1 512 512 1 0 0 -o
+workDir/temp.coded -of 0 -wt 4 --blocksPerSegment 64 --part2Flag 1 0
+--part3Flag 1 0 --part4Flag 1 0 -dc 1}
+
+This execution produces a encoded file where only DC components are
+encoded. To decompress the file and recover the original image run:
+
+\emph{\#TERdecode -i workDir/temp.coded.rec -o
+  workDir/marstest.raw.rec.raw -g 1 512 512 1 0 0} 
+
+\vspace{0.25cm}\textbf{COMPRESSION UP TO A FIXED BITPLANE AND
+  STAGE}\vspace{0.25cm}   
+
+\emph{\#TERcode -i workDir/marstest.raw -g 1 512 512 1 0 0 -o
+workDir/marstest.raw -of 0 -wt 4 --blocksPerSegment 64 --part2Flag 1 0
+--part3Flag 1 0 --part4Flag 1 0 -dc 0 -bp 1 -ss 2}
+
+This execution produces a encoded file that each segment is encoded up
+to the bit plane 1 and the stage 2. To decompress
+the file and recover the original image run:
+
+\emph{\#TERdecode -i workDir/marstest.raw.rec -g 1 512 512 1 0 0 -o
+workDir/marstest.raw.rec.raw}
+
+\vspace{0.25cm}\textbf{COMPRESSION USING A DIFFERENT ANY NUMBER OF
+  WAVELET LEVELS}\vspace{0.25cm}  
+
+\emph{\#TERcode -i workDir/lena.pgm -wl 5 -wt 3 -o
+  workDir/lena.pgm -of 1 -po 0}
+
+This execution produces a file,  workDir/lena.pgm.ter,
+that is not compilant with the Recommendation.
+To decompress the file and recover the original image run:
+
+\emph{\#TERcode -i workDir/lena.pgm.ter -o
+  workDir/lena.pgm.ter.pgm}
+
+\vspace{0.25cm}\textbf{SHOWING COMPRESSION
+  STATISTICS}\vspace{0.25cm} 
+
+In some cases it is interesting to show the time that each stage
+lasts and the used memory. It can be done by: 
+
+\emph{\#TERcode -i inputImage.pgm -o outputFile -vc 1} \\ 
+
+\end{document}

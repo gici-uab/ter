@@ -1,0 +1,187 @@
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$help}} & \multicolumn{4}{|l|}{} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$h}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Displays this help and exits program.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{} \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$outputImage}} & \multicolumn{4}{|l|}{$\{$string$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$o}} & \emph{Mandatory:} & Yes & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Decoded image. Valid formats are: pgm, ppm, pbm, jpg, tiff, png, bmp, gif, fpx. If image is raw data file extension must be ".raw" and "-g" parameter is mandatory.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{} \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$imageGeometry}} & \multicolumn{4}{|l|}{$\{$int int int int int boolean$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$g}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Geometry of raw image data. Parameters are:\newline 1- zSize (number of image components)\newline 2- ySize (image height)\newline 3- xSize (image width)\newline 4- data type. Possible values are:\newline \hspace*{0.5truecm} 0- boolean (1 byte)\newline \hspace*{0.5truecm} 1- unsigned int (1 byte)\newline \hspace*{0.5truecm} 2- unsigned int (2 bytes)\newline \hspace*{0.5truecm} 3- signed int (2 bytes)\newline \hspace*{0.5truecm} 4- signed int (4 bytes)\newline \hspace*{0.5truecm} 5- signed int (8 bytes)\newline \hspace*{0.5truecm} 6- float (4 bytes)\newline \hspace*{0.5truecm} 7- double (8 bytes)\newline 5- Byte order (0 if BIG ENDIAN, 1 if LITTLE ENDIAN)\newline 6- 1 if 3 first components are RGB, 0 otherwise.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{} \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$inputFile}} & \multicolumn{4}{|l|}{$\{$string$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$i}} & \emph{Mandatory:} & Yes & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Input encoded image file name.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{} \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$segByteLimit}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$bl}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Maximum number of bytes that can be used in a segment.\newline The value of SegByteLimits includes bytes used for the header, and is applied to the subsequent segments until a new value is given. Value should be in the interval (0 , 134217728]} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{134217728 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$DCStop}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$dc}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Indicates whether compressed output stops after coding of quantized DC coefficients.  If only one value is specified, type will be used for all image segments.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{0 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$bitPlaneStop}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$bp}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Only used when DCStop equals 0. Indicates the bit plane index where the codification should stop.  If only one value is specified, type will be used for all image segments.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{0 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$stageStop}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$ss}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Indicates the stage where the codification ends.  If only one value is specified, type will be used for all image segments. If three levels of DWT are applied, then: \newline 1 - stage 1 \newline 2 - stage 2 \newline 3 - stage 3 \newline 4 - stage 4 } \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{The same of wavelet levels plus one} \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$verboseComputation}} & \multicolumn{4}{|l|}{$\{$boolean$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$vc}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Show some information about time and used memory for each compression stage. Value is a boolean: 0 indicates NO show and 1 indicates show.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{0 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$verboseParameters}} & \multicolumn{4}{|l|}{$\{$boolean$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$vp}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Show TER encoding parameters. Value is a boolean: 0 indicates NO show and 1 indicates show.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{0 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$verboseMessages}} & \multicolumn{4}{|l|}{$\{$boolean$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$vm}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Show TER decoder messages, for instance if the file ends unexpectedly. Value is a boolean: 0 indicates NO show and 1 indicates show.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{0 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$gammaValue}} & \multicolumn{4}{|l|}{$\{$float$[$ float$[$ float$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$gv}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Float array that indicates for each channel the way of recovering the values. First value is for the first channel, second value for the second channel and so on. If only one value is specified, it will be the same for all channels.\newline This float indicates the point of the interval where values are recovered in the decoding process. When decoding a value inside an interval is possible to approximate this value to the middle value of the interval, to the low value, to 0,25 of the interval, to ... \newline Example: in bit plane 3, a recovered value can be approximated to 8 (low value) or to 12 (middle value). \newline Valid values are real numbers in the interval [0,1). \newline For example: \newline   0.0 - Lower value (gamma = 0) \newline   0.5 - Middle value (gamma = 1/2) \newline   0.375 - 3/8 of the threshold value (gamma = 3/8)} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{0.375 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$completionMode}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$cm}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Integer array that indicates for each channel the way of completing DC values when the bitstream ends unexpectedly. First value is for the first channel, second value for the second channel and so on. If only one value is specified, it will be the same for all channels. \newline Valid values are:\newline 0 - Add zeros \newline 1 - Repeat the middle value of the magnitude interval where the components are being decoded, i.e., (max(-xMin,xMax)+1)/2. \newline 2 - Repeat the mean of the decoded values \newline n - For n>2, repeat the mean value of the n-2 last recovered values. If less than n-2 values have been recovered, only the recovered values will be used. Note that for n=3 we repeat the last value.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{0 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$minusHalf}} & \multicolumn{4}{|l|}{$\{$boolean$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$mh}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Boolean value that indicated if the user wants to substract 0.5 to the recovered values in the bit plane encoder, as Recomendation does for the lossy case.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{false } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$test3d}} & \multicolumn{4}{|l|}{$\{$int$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$t3}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Kind of 3D Discrete wavelet transform to be applied. Valid values are:\newline 0 - 2D DWT in the spatial domain  \newline 1 - 1D + 2D hybrid  DWT \newline 2 - 3D pyramidal DWT} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{ } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$spectralWTLevels}} & \multicolumn{4}{|l|}{$\{$int$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$swl}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Discrete wavelet transform levels to be applied in the spatial domain.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{ } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$spectralWTType}} & \multicolumn{4}{|l|}{$\{$int$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$swt}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Discrete wavelet transform type to be applied in the spatial domain.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{ } \\
+\hline
+\end{tabular}\end{center}

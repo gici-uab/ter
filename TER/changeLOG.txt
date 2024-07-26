@@ -1,0 +1,81 @@
+- Corrected a bug in the progression order 0 for gaggles
+with size different from 16.
+- Some minor bugs corrected.
+- Speed up the load/save of some image formats.
+---- version 2.01 beta (March 2008) ----
+- Corrected an bug in the parameters parser.
+- Added in the headers the minimum and the maximum value of the input
+image. This way the performance when ranging the parameters in the
+decoder is improved.
+- Added a mode to encode several targets at the same time. Thus
+speed is significantly improved in tests (only available for .ter files,
+and using the target byte or bpppb, not for compression factor).
+For more information see (-tb -targetBytes). Note that -bpp paramater has been
+replaceb by --bpppb. See TERcode -h for more details.
+- Added a parameter to range and center the recovered pixels according
+to the original parameters (see -rp --rangePixelsRecovered).
+---- version 2.0 beta (November 2007) ----
+- Added 'TERdisplay' a command to extract regions from the
+encoded image using only the parts of the streams required. (testing)
+- Added a module that allows three dimensional wavelet transform.(testing)
+- Added resolution, position, component and quality scalability.
+- Modified the parameter to select the name of the output encoded file.
+(-o --outputFile) For more information type ./TERcode -h.
+---- version 1.1 (January 2007) ----
+- Added options to approximate the transformed coefficients before
+applying the bit plane encoder step. Related parameter: -ca 
+(--coefficientsApproximation). For more information type ./TERcode -h.
+- Added options to pre-process the input image. Related parameters
+are : -st (--shiftType), -sc (--shiftChannels) and -sv (--shiftValues).
+For more information type ./TERcode -h.
+- Minor errors have been corrected. Improved the speed in the 
+interleaving step.
+- Added a new option to the parameter -gv (--gammaValue) that
+recover to several points of the interval. For instance, to 0.25 of the 
+interval. For more information type ./TERdecode -h.
+---- version 1.04 (September 2006) ----
+- Added parameter -cm (--completionMode) to choose the way DC are 
+completed when the encoded file ends unexpectedly. For more information 
+type ./TERdecode -h.
+- Corrected some minors errors fot the --recoveryMode 1. DC components were 
+recovered always to the lowest value of the interval.
+- Added parameter -co (--compressionOrder) to set the way of creating
+each encoded segment. The user may choose between encode from the highest
+to the lowest bitplane or from the first to the last block in the segment.
+---- version 1.03 (July 2006) ----
+- Some minor errors have been corrected in the encoder
+- Added parameter -ap (--adjustHeaderParameters) to adjust values 
+of the header once encoding process has finished. For more information 
+type ./TERcode -h.
+- Added parameter to fix truncation points -tp (--truncationPoints) 
+in the encoded file. For more information type ./TERcode -h.
+- When the user employs the parameter -bl (--segByteLimit) as a decoder
+parameter, the decoder stops at the given segByteLimit when available.
+- Added the parameter -rm (--recoveryMode) to the decoder. This parameter
+allows the user to indicate how the parameters must be recovered during
+the bit plane decoder (to the middle value or to the lowest value of the 
+interval).
+- Corrected some minor errors while parsing parameters for decoding process.
+- Eliminated parameters -h2, -h3 and -h4 since they were no longer needed.
+- Eliminated the parameter -rc (--recommendation) since it was no longer
+needed.
+- Added support to create encoded files by giving compression factor 
+(-cr or --compressionFactor) instead segByteLimit or bitsPerPixel.
+- Corrected a problem in CreateFile for very low bit rates.
+---- version 1.02 (June 2006) ----
+- Added support for loading pgm images of 2 bytes.
+- Added support for saving pgm images of 2 bytes.
+- Improved the computation and memory performance for low bit rates.
+- Modified input parameter --stageStop (-ss). Now the input values are
+the same as the ones in the recomendation.
+- Corrected how the numbers of rows that must be added after decoding
+the segment. In previous versions it could provide some problems.
+---- Version 1.01 (May 2006) ----
+- Corrected the mistake produced when segByteLimit was used togheter
+with useFill equal to 0  
+- Some errors in the help text have been corrected.
+- The users receives a warning when tries to saved a pgm with more
+than one byte.
+---- Version 1.0 (May 2006) ----
+
+

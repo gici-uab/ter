@@ -1,0 +1,13 @@
+- When more than 3 levels of DWT are perfomed, the refinement of the AC components are refined in a different order scan depending on the level. It must be arranged to perform always the same scanning order.
+
+- Correct the bug for the recommended interleaving when dealing with huge images.
+
+- Modify the way that information is stored in the BPE in order to reduce memory requirements by removing the bitplane parameter in the streams. It can be replaced using auxiliary information.
+
+- Improve the speed of the interleaving class. It can be done by estimating the size of the streams prior to its creation, as done in DegmentCode2D.
+
+- Create a module that performs PCA.
+
+- Push broom mode. Design of a new module to load images.
+
+- Add an optional header parameter that includes the max and the minimum value to range check the image in the decoder.

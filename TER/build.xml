@@ -1,0 +1,55 @@
+<project name="TER" default="compile" basedir=".">
+	<property name="name" value="TER" description="Project name."/>
+	<property name="src" value="src" description="The sources of the project."/>
+	<property name="build" value="build" description="The build files (.class) of the project."/>
+	<property name="dist"  value="dist" description="The final file (.jar) of the project."/>
+	<property name="docs"  value="docs" description="The API documentation."/>
+	<property name="workDir"  value="workDir" description="The work directory of the project."/>
+
+	<target name="compile" description="Compile the project. The class files are saved in build directory and the .jar file in dist directory.">
+		<delete file="${dist}/${name}.jar"/>
+		<javac srcdir="${src}" destdir="${build}" nowarn="off" optimize="on" deprecation="on" debug="off">
+			 <exclude name="**/jUnits/*"/>
+		</javac>
+		<jar destfile="${dist}/${name}code.jar" basedir="${build}" manifest="${src}/${name}/manifestTERcode.mf"/>
+		<jar destfile="${dist}/${name}decode.jar" basedir="${build}" manifest="${src}/${name}/manifestTERdecode.mf"/>
+		<jar destfile="${dist}/${name}display.jar" basedir="${build}" manifest="${src}/${name}/manifestTERdisplay.mf"/>
+	</target>
+
+	<target name="doc" description="Generate the API documentation for the project.">
+		<delete dir="${docs}/api"/>
+		<mkdir dir="${docs}/api"/>
+		<javadoc destdir="${docs}/api" author="true" access="private" windowtitle="TER API - WaveGis Project">
+			<fileset dir="${src}" defaultexcludes="yes">
+				<include name="Gici*/**.java" />
+				<include name="${name}/*/*/**.java" />
+				<include name="${name}/*/**.java" />
+				<include name="${name}/**.java" />
+			</fileset>
+			<doctitle>
+				<![CDATA[<h1>TER API (WaveGis Project)</h1>]]>
+			</doctitle>
+			<bottom>
+				<![CDATA[
+					<i>TER - Copyright (C) 2006</i><br>
+					This program is free software; you can redistribute it and/or modify it under the terms of the <a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License</a> as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.<br>
+					This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the <a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License</a> for more details.<br><br>
+					<a href="mailto:gici-dev@deic.uab.es"> Group on Interactive Coding of Images (GICI) </a> - UAB (Spain)
+				]]>
+			</bottom>
+		</javadoc>
+	</target>
+
+	<target name="clean">
+		<delete includeemptydirs="true">
+			<fileset dir="${build}" includes="**/*"/>
+		</delete>
+		<delete>
+			<fileset dir="${dist}" includes="*.*"/>
+		</delete>
+		<delete dir="${docs}/api"/>
+		<!--delete>
+			<fileset dir="${workDir}" includes="*.*"/>
+		</delete-->
+	</target>
+</project>

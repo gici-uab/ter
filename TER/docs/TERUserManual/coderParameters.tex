@@ -1,0 +1,572 @@
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$help}} & \multicolumn{4}{|l|}{} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$h}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Displays this help and exits program.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{} \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$inputImage}} & \multicolumn{4}{|l|}{$\{$string$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$i}} & \emph{Mandatory:} & Yes & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Input image. Valid formats are: pgm, ppm, pbm, jpg, tiff, png, bmp, gif, fpx. If image is raw data file extension must be ".raw" or ".img" and "-g" parameter is mandatory.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{} \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$imageGeometry}} & \multicolumn{4}{|l|}{$\{$int int int int boolean$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$g}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Geometry of raw image data. Parameters are:\newline 1- zSize (number of image components)\newline 2- ySize (image height)\newline 3- xSize (image width)\newline 4- data type. Possible values are:\newline \hspace*{0.5truecm} 0- boolean (1 byte)\newline \hspace*{0.5truecm} 1- unsigned int (1 byte)\newline \hspace*{0.5truecm} 2- unsigned int (2 bytes)\newline \hspace*{0.5truecm} 3- signed int (2 bytes)\newline \hspace*{0.5truecm} 4- signed int (4 bytes)\newline \hspace*{0.5truecm} 5- signed int (8 bytes)\newline \hspace*{0.5truecm} 6- float (4 bytes)\newline \hspace*{0.5truecm} 7- double (8 bytes)\newline 5- Byte order (0 if BIG ENDIAN, 1 if LITTLE ENDIAN)\newline 6- 1 if 3 first components are RGB, 0 otherwise.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{} \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$outputFile}} & \multicolumn{4}{|l|}{$\{$string$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$o}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Output image file name (specified without extension).} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{same as input with a new extension (see "-of" parameter)} \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$outputFileType}} & \multicolumn{4}{|l|}{$\{$int$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$of}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{File type to generate. Valid values are:\newline 0- CCSDS Recommended file (.rec) \newline 1- TER file (.ter)} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{0 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$part2Flag}} & \multicolumn{4}{|l|}{$\{$int$[$int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$h2}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Indicates for each segment the presence of Part 2 header.\newline 0 - Part 2 header absent\newline 1 - Part 2 header present} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{1 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$part3Flag}} & \multicolumn{4}{|l|}{$\{$int$[$int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$h3}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Indicates for each segment the presence of Part 3 header.\newline 0 - Part 3 header absent\newline 1 - Part 3 header present} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{1 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$part4Flag}} & \multicolumn{4}{|l|}{$\{$int$[$int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$h4}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Indicates for each segment the presence of Part 4 header.\newline 0 - Part 4 header absent\newline 1 - Part 4 header present} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{1 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$segByteLimit}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$bl}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Maximum number of bytes that can be used in a segment.\newline The value of SegByteLimits includes bytes used for the header, and is applied to the subsequent segments until a new value is given. Value should be in the interval (0 , 134217728] and it is expressed mod(134217728)} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{134217728 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$DCStop}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$dc}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Indicates whether compressed output stops after coding of quantized DC coefficients.  If only one value is specified, type will be used for all image segments.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{0 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$bitPlaneStop}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$bp}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Only used when DCStop equals 0. Indicates the bit plane index where the codification should stop.  If only one value is specified, type will be used for all image segments.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{0 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$stageStop}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$ss}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Indicates the stage where the codification ends.  If only one value is specified, type will be used for all image segments. If three levels of DWT are applied, then: \newline 1 - stage 1 \newline 2 - stage 2 \newline 3 - stage 3 \newline 4 - stage 4 } \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{The same of wavelet levels plus one} \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$useFill}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$uf}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Specifies whether fill bits will be used to produce SegByteLimit bytes in each segment.  If only one value is specified, type will be used for all image segments.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{0 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$blocksPerSegment}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$bs}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Indicates the number of blocks contained in a segment. If only one value is specified, type will be used for all image segments.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{1048576 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$optDCSelect}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$ds}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Indicates the method used to select k parameter while coding DC components} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{1 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$optACSelect}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$as}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Indicates the method used to select k parameter while coding BitDepthAC\_Block components} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{1 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$WTType}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$wt}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Discrete wavelet transform type for each image component in the spatial domain. First value is for the first component, second value for the second component and so on. If only one value is specified, wavelete transform type will be the same for all components. Valid values are:\newline 0 - No wavelet transform \newline 1 - Integer (Reversible) 5/3 DWT \newline 2 - Real Isorange (irreversible) 9/7 DWT (JPEG2000 standard) \newline 3 - Real Isonorm (irreversible) 9/7 DWT (CCSDS-Recommended) \newline 4 - Integer (Reversible) 9/7M DWT (CCSDS-Recommended) \newline 5 - Integer 5/3 DWT (classic construction) \newline 6 - Integer 9/7 DWT (classic construction)} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{4 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$signedPixels}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$sp}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{For each segment (entire image image in the Recommendation) specifies if the input pixels are signed or unsigned quantities. Valid values are:\newline 0 - unsigned \newline 1 - signed} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{0 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$transposeImg}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$ti}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Indicates whether the channel (entire image in the Recommendation) should be transposed after reconstruction. Valid values are:\newline 0 - do not transpose image \newline 1 - transpose image} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{0 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$codeWordLength}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$cl}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Indicated the coded word length for each segment. Valid values are:\newline 0 - 8-bit word \newline 1 - 16-bit word \newline 2 - 24-bit word \newline 3 - 32-bit word} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{0 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$customWtFlag}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$wg}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Weighting type for each component. First value is for the first component, second for the second component and so on. If only one value is specified, type will be used for all image components.\newline 0 - CCSDS recommended\newline 1 - Defined by the user\newline 2 - No weighting} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{0 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$customWeight}} & \multicolumn{4}{|l|}{$\{$float$[$ float$[$ float$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$cw}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Custom weights defined by the user. For each subband of each component a weighting factor should be given for each subband. If only the number of parameters introduced is not correct the programm stops. The order of the weights is as follows: For each component :\newline LL\_n,HL\_n,LH\_n,HH\_n,HL\_n-1,LH\_n-1,HH\_n-1,...,HL\_0,LH\_0,HH\_0.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{} \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$WTLevels}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$wl}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Discrete wavelet transform levels for each image component in the spatial domain. First value is for the first component, second value for the second component and so on. If only one value is specified, wavelet transform levels will be the same for all components.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{3 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$imageExtensionType}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$ie}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Indicates the kind of extension that has been applied to the each component of the image in order to make it able to be compressed using TER.  If only one value is specified, image extension type will be the same for all components. Valid values are:\newline 0 - Repeating last value\newline 1 - Symmetric expansion\newline 2 - No extension} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{0 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$WTOrder}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$wo}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Order in which the Discrete wavelet transform is performed over the spatial dimentions. First value is for the first component, second value for the second component and so on. If only one value is specified, wavelet transform order will be the same for all components. \newline 0 - Horizontal - Vertical \newline 1 - Vertical - Horizontal \newline 2 - Only horizontal} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{0 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$gaggleDCSize}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$gd}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Size of a gaggle for DC components in each segment of the image. First value is for the first segment, second value for the second segment and so on. If only one value is specified, the size of DC gaggles will be the same for all segments. 0 value means that all the blocks of the segment are in the same gaggle} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{16 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$gaggleACSize}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$ga}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Size of a gaggle for AC components in each segment of the image. First value is for the first segment, second value for the second segment and so on. If only one value is specified, the size of AC gaggles will be the same for all segments. 0 value means that all the blocks of the segment are in the same gaggle} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{16 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$idDC}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$id}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Number which indicates how often the ID DC appears. First value is for the first segment, second value for the second segment and so on. If only one value is specified, the frequency of ID DC will be the same for all segments. 0 value means that only an ID DC is used for the segment} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{0 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$idAC}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$ia}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Number which indicates how often the ID AC appears. First value is for the first segment, second value for the second segment and so on. If only one value is specified, the frequency of ID AC will be the same for all segments. 0 value means that only an ID DC is used for the segment} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{0 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$entropyAC}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$ea}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Integer array which indicates the entropy coder selected for coding AC components for each segment. First value is for the first segment, second value for the second segment and so on. If only one value is specified, the AC entropy coder will be the same for all segments. If only one value is specified, entropy encoder for AC components will be the same for all segments. Valid values are:\newline 0 -  No entropy code for AC components \newline 1 - CCSDS Recommended  entropy coder\newline } \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{1 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$resolutionLevels}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$rl}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Highest resolution level to be coded for each image component. 0 means that only LL subband will be compressed, 1 is LL + (HL1 + LH1 + HH1), 2 is LL + (HL1 + LH1 + HH1) + (HL2 + LH2 + HH2) and so on. \newline Values must be between 0 to WT levels. If a value is greater than the number of WT levels it will be understood that all resolution levels of the component are to be compressed. If only one value is specified, it will be used for all image components.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{same of WT levels specified} \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$pixelBitDepth}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$pd}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Integer array which indicates the pixel bit depth for each channel. First value is for the first channel, second value for the second channel and so on. If only one value is specified, the pixel bit depth will be the same for all channel.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{ } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$verboseComputation}} & \multicolumn{4}{|l|}{$\{$boolean$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$vc}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Show some information about time and used memory for each compression stage. Value is a boolean: 0 indicates NO show and 1 indicates show.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{0 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$verboseParameters}} & \multicolumn{4}{|l|}{$\{$boolean$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$vp}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Show TER encoding parameters. Value is a boolean: 0 indicates NO show and 1 indicates show.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{0 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$bitsPerSample}} & \multicolumn{4}{|l|}{$\{$float$[$float$[$float$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$bps}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Float array which indicates the bits per sample of each encoded segment. First value is for the first segment, second value for the second segment and so on. If only one value is specified, the bits per sample will be the same for all segments.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{ } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$compressionFactor}} & \multicolumn{4}{|l|}{$\{$float$[$ float$[$ float$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$cf}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Float array which indicates the compression factor for each segment. First value is for the first segment, second value for the second segment and so on. If only one value is specified, the compression factor will be the same for all segments.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{1.0 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$truncationPoints}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$tp}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{For each segment specifies the available truncation points. First value is for the first segment, second value for the second segment and so on. If only one value is specified, the truncation points will be the same for all segments. Valid values are:\newline 0 - any \newline 1 - end of bitplane (bitPlaneStop) \newline 2 - end of resolution level (stageStop) \newline 3 - end of gaggle} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{0 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$adjustHeaderParameters}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$ap}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{For each segment specifies the parameters that should be adjusted. First value is for the first segment, second value for the second segment and so on. If only one value is specified, the asjusted parameters will be the same for all segments. Valid values are:\newline 0 - No adjustement  \newline 1 - Adjust segByteLimit and useFill after interleaving } \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{0 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$progressionOrder}} & \multicolumn{4}{|l|}{$\{$int$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$po}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{This parameter specifies the progression order employed to create the encode image. Valid values are: \newline 0 Recommended order (i.e. order defined in the CCSDS recomendation for image data coding) \newline 1 LRCP Layer-Resolution-Component-Position \newline 2 RLCP Resolution-Layer-Component-Position \newline 3 RPCL Resolution-Position-Component-Layer \newline 4 PCRL Position-Component-Resolution-Layer \newline 5 CPRL Component-Position-Resolution-Layer} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{0 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$shiftType}} & \multicolumn{4}{|l|}{$\{$int$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$st}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Level shift is a preprocessing operation for unsigned channels to convert them in signed channels. It can be performed in some diferent ways:\newline 0- No level shift\newline 1- JPEG2000 standard level shifting (only non-negative channels)\newline 2- Range center substract\newline 3- Average substract\newline 4- Specific values substract (see "-sv" parameter)} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{0 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$shiftChannels}} & \multicolumn{4}{|l|}{$\{$boolean$[$ boolean$[$ boolean$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$sc}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Specification in which channels level shift will be applied. Each value specifies a channel (0 is the first image channel).} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{1 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$shiftValues}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$sv}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Substracted values in each image channel. If only one is specified, the value will be used for all image channel otherwise first value is for the first component, second value is for the second component, and so on.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{null} \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$coefficientsApproximation}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$ca}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{This parameter specifies the approximation to be applied to coefficients of each channel. First value is for the first channel, second value for the second channel and so on. If only one value is specified, it will be the same for all channels. Valid values are:\newline 0 - Cast to integer  \newline 1 - Round  \newline 2 - Floor  \newline 3 - Ceil } \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{1 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$targetBytes}} & \multicolumn{4}{|l|}{$\{$int$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$tb}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Number of target bytes for the compressed bitstream. Computations are done without taking into account headings, so file size will be slightly larger than this number of bytes (0 indicates that size file is not important -all compressed data will be stored-).} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{} \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$layerCreationType}} & \multicolumn{4}{|l|}{$\{$int$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$lc}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{This parameter specifies the method used to create the layers. Valid values are:\newline 0 - One single layer is created \newline 1 - Size of layers correspond to the maximum size available \newline 2 - Coding Passes Interleaving  \newline 3 - Bitplane Interleaving} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{3 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$numberOfLayers}} & \multicolumn{4}{|l|}{$\{$int$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$nl}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Number of layers desired by the user. If target does not allow this number, it is possible to create a file with less layers.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{1 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$layerSizeType}} & \multicolumn{4}{|l|}{$\{$int$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$ls}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{This parameter indicates the technique employed to select the size of the layers.Valid values are:\newline 0 - Given by the user  \newline 1 - All layers have the same length \newline 2 - Each layer has half of the length that the next layer (except for the first).} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{2 } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$layerBytes}} & \multicolumn{4}{|l|}{$\{$int$[$ int$[$ int$[$ ...$]$$]$$]$$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$lb}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{This parameters indicates the size of each layer. Each value specifies a layer, if there appear less values than layers demanded, the last value is taken as a default value for the rest of layers.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{ } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$bitsPerPixel}} & \multicolumn{4}{|l|}{$\{$float$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$bpp}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Float which indicates the bits per sample that must be used to encode the image.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{ } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$test3d}} & \multicolumn{4}{|l|}{$\{$int$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$t3}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Kind of 3D Discrete wavelet transform to be applied. Valid values are:\newline 0 - 2D DWT in the spatial domain  \newline 1 - 1D + 2D hybrid  DWT \newline 2 - 3D pyramidal DWT} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{ } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$spectralWTLevels}} & \multicolumn{4}{|l|}{$\{$int$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$swl}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Discrete wavelet transform levels to be applied in the spatial domain.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{ } \\
+\hline
+\end{tabular}\end{center}
+\begin{center}\begin{tabular}{|rr|rlrl|}
+\hline
+\multicolumn{2}{|l|}{\textbf{$-$$-$spectralWTType}} & \multicolumn{4}{|l|}{$\{$int$\}$} \\
+\cline{3-6}
+\multicolumn{2}{|l|}{\textbf{$-$swt}} & \emph{Mandatory:} & No & &  \\
+\hline
+\emph{Explanation:} & \multicolumn{5}{|p{12cm}|}{Discrete wavelet transform type to be applied in the spatial domain.} \\
+\hline
+\emph{Default:} & \multicolumn{5}{|p{12cm}|}{ } \\
+\hline
+\end{tabular}\end{center}
